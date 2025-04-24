@@ -17,7 +17,7 @@
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
-                        @enderror
+                        @enderror 
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Ruangan</label>

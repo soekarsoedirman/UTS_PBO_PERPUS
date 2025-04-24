@@ -13,11 +13,14 @@ class DashboardRoomController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @param  \App\Models\Room  $room
      */
     public function index()
     {
+        $room = Room::where('id', 1)->first(); 
         return view('dashboard.rooms.index', [
             'title' => "Ruangan",
+            'room' => $room,
             'rooms' => Room::latest()->paginate(10),
             'buildings' => Building::all(),
         ]);

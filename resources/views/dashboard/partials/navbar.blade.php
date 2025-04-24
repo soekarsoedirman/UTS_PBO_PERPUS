@@ -15,15 +15,30 @@
       <div class="main_nav_container">
         <div class="main_nav">
           <ul class="main_nav_list">
-            <li class="main_nav_item {{Request::is('') ? '' : 'active'}}">
-              <a href="/">Beranda</a>
+            @if (auth()->user()->role_id <= 2)
+              <li class="main_nav_item {{Request::is('dashboard/admin') ? 'sidebar-active' : ''}}">
+                <a  href="/dashboard/admin">Daftar Admin</a>
+              </li>
+              <li class="main_nav_item {{Request::is('dashboard/users') ? 'sidebar-active' : ''}}">
+                <a  href="/dashboard/users">Daftar User</a>
+              </li>
+              <li class="main_nav_item {{Request::is('dashboard/temporaryRents') ? 'sidebar-active'  : ''}}">
+                <a  href="/dashboard/temporaryRents">Daftar Peminjaman Sementara</a>
+              </li>
+            @endif
+            @if (auth()->user()->role_id <= 4)
+              <li class="main_nav_item {{Request::is('dashboard/rents') ? 'sidebar-active' : ''}}">
+                <a  href="/dashboard/rents">Daftar Peminjaman</a>
+              </li>
+            @endif
+            <li class="main_nav_item {{Request::is('dashboard/rooms') ? 'sidebar-active' : ''}}">
+              <a  href="/dashboard/rooms">Daftar Ruangan</a>
             </li>
-            <li class="main_nav_item {{Request::is('about') ? 'active' : ''}}">
-              <a href="/about">Tentang</a>
-            </li>
-            <li class="main_nav_item {{Request::is('help') ? 'active' : ''}}">
-              <a href="/help">Bantuan</a>
-            </li>
+
+
+
+
+           
             @auth
             <li class="main_nav_item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
